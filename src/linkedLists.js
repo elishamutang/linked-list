@@ -1,7 +1,7 @@
-function node() {
+function node(value = null, nextNode = null) {
     return {
-        value: null,
-        nextNode: null,
+        value,
+        nextNode,
     }
 }
 
@@ -39,16 +39,65 @@ function linkedLists() {
                 this.list.nextNode = tmp
             }
         },
+
+        size() {
+            let tmp = this.list
+
+            let counter = 1
+
+            if (Object.values(tmp).length == 0) {
+                counter = 0
+            } else {
+                while (tmp.nextNode !== null) {
+                    counter++
+                    tmp = tmp.nextNode
+                }
+            }
+
+            return counter
+        },
+
+        head() {
+            return this.list
+        },
+
+        tail() {
+            let tmp = this.list
+
+            if (Object.values(tmp).length === 0) {
+                return tmp
+            } else {
+                while (tmp.nextNode !== null) {
+                    tmp = tmp.nextNode
+                }
+            }
+
+            return tmp
+        },
+
+        at(index) {
+            let tmp = this.list
+
+            let counter = 0
+
+            if (Object.values(tmp).length === 0) {
+                return tmp
+            } else {
+            }
+        },
     }
 }
 
 const test = linkedLists()
 test.append('value')
-
 test.append('value2')
-test.prepend('value3')
-// test.prepend('value4')
+test.append('value3')
+test.prepend('value4')
 // test.append('value5')
-test.prepend('value6')
+// test.prepend('value6')
 
-console.log(test.list)
+// console.log(test.list)
+// console.log(test.size())
+console.log(test.head())
+// console.log(test.tail())
+// console.log(test.at(1))
