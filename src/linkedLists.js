@@ -8,12 +8,15 @@ function node(value = null, nextNode = null) {
 function linkedLists() {
     return {
         list: {},
+        head: {},
+        tail: {},
 
         append(value) {
             const newNode = node()
             newNode.value = value
 
             if (Object.values(this.list).length === 0) {
+                this.head = node(value)
                 this.list = newNode
             } else {
                 let tmp = this.list
@@ -23,6 +26,7 @@ function linkedLists() {
                 }
 
                 tmp.nextNode = newNode
+                this.tail = newNode
             }
         },
 
@@ -38,6 +42,8 @@ function linkedLists() {
                 this.list = newNode
                 this.list.nextNode = tmp
             }
+
+            this.head = node(value)
         },
 
         size() {
@@ -55,24 +61,6 @@ function linkedLists() {
             }
 
             return counter
-        },
-
-        head() {
-            return this.list
-        },
-
-        tail() {
-            let tmp = this.list
-
-            if (Object.values(tmp).length === 0) {
-                return tmp
-            } else {
-                while (tmp.nextNode !== null) {
-                    tmp = tmp.nextNode
-                }
-            }
-
-            return tmp
         },
 
         at(index) {
@@ -96,8 +84,8 @@ test.prepend('value4')
 // test.append('value5')
 // test.prepend('value6')
 
-// console.log(test.list)
+console.log(test.list)
 // console.log(test.size())
-console.log(test.head())
-// console.log(test.tail())
+// console.log(test.head)
+// console.log(test.tail)
 // console.log(test.at(1))
