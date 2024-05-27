@@ -49,10 +49,10 @@ function linkedLists() {
         size() {
             let tmp = this.list
 
-            let counter = 1
+            let counter = 0
 
             if (Object.values(tmp).length == 0) {
-                counter = 0
+                return counter
             } else {
                 while (tmp.nextNode !== null) {
                     counter++
@@ -75,13 +75,30 @@ function linkedLists() {
                     throw new Error('Size of list exceeded.')
                 }
 
-                while (counter < index) {
+                while (counter < index && tmp.nextNode !== null) {
                     counter++
                     tmp = tmp.nextNode
                 }
 
                 return tmp
             }
+        },
+
+        pop() {
+            let tmp = this.list
+
+            if (Object.values(tmp).length === 0) {
+                return tmp
+            } else {
+                let listLength = this.size()
+
+                tmp = this.at(listLength - 1)
+                tmp.nextNode = null
+
+                this.tail = tmp
+            }
+
+            return this.list
         },
     }
 }
@@ -99,4 +116,4 @@ test.prepend('value4')
 // console.log(test.head)
 // console.log(test.tail)
 // console.log(test.at(1))
-console.log(test.at(0))
+console.log(test.pop())
