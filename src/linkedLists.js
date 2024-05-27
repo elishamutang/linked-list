@@ -71,6 +71,16 @@ function linkedLists() {
             if (Object.values(tmp).length === 0) {
                 return tmp
             } else {
+                if (index > this.size()) {
+                    throw new Error('Size of list exceeded.')
+                }
+
+                while (counter < index) {
+                    counter++
+                    tmp = tmp.nextNode
+                }
+
+                return tmp
             }
         },
     }
@@ -84,8 +94,9 @@ test.prepend('value4')
 // test.append('value5')
 // test.prepend('value6')
 
-console.log(test.list)
+// console.log(test.list)
 // console.log(test.size())
 // console.log(test.head)
 // console.log(test.tail)
 // console.log(test.at(1))
+console.log(test.at(0))
