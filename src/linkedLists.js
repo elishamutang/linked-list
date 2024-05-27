@@ -100,6 +100,39 @@ function linkedLists() {
 
             return this.list
         },
+
+        contains(input) {
+            let tmp = this.list
+
+            while (tmp !== null && tmp.value !== input) {
+                tmp = tmp.nextNode
+            }
+
+            if (tmp === null) {
+                return false
+            } else {
+                return true
+            }
+        },
+
+        find(input) {
+            let insideList = this.contains(input)
+
+            if (insideList) {
+                let idx = 0
+
+                let tmp = this.at(idx)
+
+                while (tmp.value !== input) {
+                    idx++
+                    tmp = this.at(idx)
+                }
+
+                return idx
+            } else {
+                return null
+            }
+        },
     }
 }
 
@@ -116,4 +149,6 @@ test.prepend('value4')
 // console.log(test.head)
 // console.log(test.tail)
 // console.log(test.at(1))
-console.log(test.pop())
+// console.log(test.pop())
+// console.log(test.contains('value4'))
+console.log(test.find('value4'))
