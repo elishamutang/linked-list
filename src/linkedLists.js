@@ -202,6 +202,9 @@ test.append('value')
 test.append('value2')
 test.append('value3')
 test.prepend('value4')
+
+// COMMENT OUT BELOW TO TEST OUT EACH METHOD!
+
 // test.append('value5')
 // test.prepend('value6')
 
