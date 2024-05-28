@@ -65,13 +65,13 @@ function linkedLists() {
 
         at(index) {
             let tmp = this.list
-
+            let listLength = this.size()
             let counter = 0
 
             if (Object.values(tmp).length === 0) {
                 return tmp
             } else {
-                if (index > this.size()) {
+                if (index > listLength || index < 0) {
                     throw new Error('Size of list exceeded.')
                 }
 
@@ -169,8 +169,6 @@ function linkedLists() {
                 this.prepend(value)
             } else if (index === listLength) {
                 this.append(value)
-            } else if (index > listLength || index < 0) {
-                throw new Error('Length of list exceeded')
             } else {
                 let prev = this.at(index - 1)
                 let current = this.at(index)
@@ -179,7 +177,22 @@ function linkedLists() {
                 prev.nextNode = newNode
             }
 
-            return this.toString()
+            return this.list
+        },
+
+        // Extra credit
+        removeAt(index) {
+            if (index === 0) {
+                this.list = this.list.nextNode
+            } else {
+                let current = this.at(index)
+                let prev = this.at(index - 1)
+
+                current = current.nextNode
+                prev.nextNode = current
+            }
+
+            return this.list
         },
     }
 }
@@ -201,5 +214,6 @@ test.prepend('value4')
 // console.log(test.contains('value4'))
 // console.log(test.find('value4'))
 // console.log(test.toString())
-console.log(test.insertAt('value6', 0))
-console.log(test.head)
+// console.log(test.insertAt('value6', 0))
+// console.log(test.head)
+// console.log(test.removeAt(3))
