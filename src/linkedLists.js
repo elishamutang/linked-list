@@ -75,7 +75,7 @@ function linkedLists() {
                     throw new Error('Size of list exceeded.')
                 }
 
-                while (counter < index && tmp.nextNode !== null) {
+                while (counter < index && tmp !== null) {
                     counter++
                     tmp = tmp.nextNode
                 }
@@ -133,6 +133,54 @@ function linkedLists() {
                 return null
             }
         },
+
+        toString() {
+            let listLength = this.size()
+            let idx = 0
+            let tmp = this.list
+
+            let valueArr = []
+
+            while (idx <= listLength) {
+                tmp = this.at(idx)
+                valueArr.push(tmp.value)
+                idx++
+            }
+
+            let word = ''
+
+            valueArr.forEach((value, i) => {
+                if (i >= 0 && i < listLength) {
+                    word += ` ${value} ->`
+                } else {
+                    word += ` ${value} -> null`
+                }
+            })
+
+            return word
+        },
+
+        // Extra credit
+        insertAt(value, index) {
+            let newNode = node(value)
+            let listLength = this.size()
+
+            if (index === 0) {
+                this.prepend(value)
+            } else if (index === listLength) {
+                this.append(value)
+            } else if (index > listLength || index < 0) {
+                throw new Error('Length of list exceeded')
+            } else {
+                let prev = this.at(index - 1)
+                let current = this.at(index)
+
+                newNode.nextNode = current.nextNode
+                prev.nextNode = newNode
+            }
+
+            return this.toString()
+        },
     }
 }
 
@@ -151,4 +199,7 @@ test.prepend('value4')
 // console.log(test.at(1))
 // console.log(test.pop())
 // console.log(test.contains('value4'))
-console.log(test.find('value4'))
+// console.log(test.find('value4'))
+// console.log(test.toString())
+console.log(test.insertAt('value6', 0))
+console.log(test.head)
