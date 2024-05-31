@@ -1,8 +1,8 @@
 {
-    "name": "new-app",
+    "name": "linked-list-class",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "./src/linkedLists.js",
     "type": "module",
     "scripts": {
         "build": "webpack --config webpack.prod.js",
