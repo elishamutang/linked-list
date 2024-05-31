@@ -48,11 +48,10 @@ function linkedLists() {
 
         size() {
             let tmp = this.list
-
-            let counter = 0
+            let counter = 1
 
             if (Object.values(tmp).length == 0) {
-                return counter
+                return 0
             } else {
                 while (tmp.nextNode !== null) {
                     counter++
@@ -135,7 +134,7 @@ function linkedLists() {
         },
 
         toString() {
-            let listLength = this.size()
+            let listLength = this.size() - 1
             let idx = 0
             let tmp = this.list
 
